@@ -10,3 +10,5 @@ setTimeout(() => {
 }, 0);
 
 console.log("STOPPING")
+
+console.log("new line");
