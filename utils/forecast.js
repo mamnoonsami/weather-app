@@ -6,7 +6,7 @@ the url : http://api.weatherstack.com/current?access_key=c21bb0678df7916a8d46702
 if the weather has to be in farenheight http://api.weatherstack.com/current?access_key=c21bb0678df7916a8d46702a81125349&query=37.8267,-122.4233&units=f
 */
 
-const forecast = (latitude, longitude, callback) => {
+const forecast = (longitude, latitude, callback) => {
     const url = 'http://api.weatherstack.com/current?access_key=c21bb0678df7916a8d46702a81125349&query=' + latitude + ',' + longitude
 
     request({ url: url, json: true }, (error, response) => {

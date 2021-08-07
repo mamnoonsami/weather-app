@@ -1,13 +1,23 @@
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
+const address = process.argv[2]
+if (!address) {
+    console.log('Please privde an address')
+} else {
+    geocode(address, (error, geocodeData) => {
+        if (error) {
+            return console.log(error)
+        }
 
-forecast('44.1545', -75.0788, (error, data) => {
-    console.log(error)
-    console.log(data)
-})
+        forecast(geocodeData.longitude, geocodeData.latitude, (error, forecastData) => {
+            if (error) {
+                return console.log(error)
+            }
 
-geocode('sylhet', (error, data) => {
-    console.log(error)
-    console.log(data)
-})
+            console.log(geocodeData.location)
+            console.log(forecastData.weather_description + ". It is Currently " + forecastData.temperature + " degrees out. It feels like " + forecastData.feels_like + " degrees.")
+        })
+
+    })
+}
